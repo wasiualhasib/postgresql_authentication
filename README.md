@@ -28,18 +28,21 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
 
    plaintext
    #** Allow pamuser role to authenticate using PAM**
+   
    host    all             +pamuser        0.0.0.0/0               pam pamservice=pgpam
 
    #** Allow scramuser role to authenticate using SCRAM-SHA-256**
+
    host    all             +scramuser      0.0.0.0/0               scram-sha-256
 
    #** Allow trustuser role to authenticate without a password**
+
    host    all             +trustuser      0.0.0.0/0               trust
    
 
    Note: The `+` prefix before the role name indicates that the entry applies to all users who are members of the specified role.
 
-4. **Edit `postgresql.conf` to Listen on All IP Addresses:**
+5. **Edit `postgresql.conf` to Listen on All IP Addresses:**
 
    Open the `postgresql.conf` file:
 
@@ -53,13 +56,13 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
    listen_addresses = '*'
    
 
-5. **Restart PostgreSQL Service:**
+6. **Restart PostgreSQL Service:**
 
    Restart the PostgreSQL service to apply the changes:
 
    sudo systemctl restart postgresql
 
-6. **Configure Firewall to Allow PostgreSQL Connections (if applicable):**
+7. **Configure Firewall to Allow PostgreSQL Connections (if applicable):**
 
    Ensure the PostgreSQL port (default 5432) is open in your firewall settings:
 
