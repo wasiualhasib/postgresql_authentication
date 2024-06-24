@@ -6,30 +6,32 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
 
    First, create roles for each authentication method you want to manage. For example, you can create roles `pamuser`, `scramuser`, and `trustuser`.
 
-   sql
-   CREATE ROLE pamuser;
-   CREATE ROLE scramuser;
-   CREATE ROLE trustuser;
+   
+   `CREATE ROLE pamuser;`
+   
+   `CREATE ROLE scramuser;`
+   
+   `CREATE ROLE trustuser;`
    
 
-2. **Assign Users to Roles:**
+3. **Assign Users to Roles:**
 
    Add users to the respective roles. This step assigns users to the appropriate groups.
 
-   sql
-   GRANT pamuser TO hasib;
-   GRANT scramuser TO nahid;
-   GRANT trustuser TO zahid;
+   
+   `GRANT pamuser TO hasib;`
+   `GRANT scramuser TO nahid;`
+   `GRANT trustuser TO zahid;`
    
 
-3. **Configure `pg_hba.conf`:**
+4. **Configure `pg_hba.conf`:**
 
    Modify the `pg_hba.conf` file to use roles for authentication. This way, you only need to update the roles when adding or removing users, rather than modifying `pg_hba.conf` for each individual user.
 
    plaintext
    #** Allow pamuser role to authenticate using PAM**
    
-   host      all             +pamuser        0.0.0.0/0               pam pamservice=pgpam
+   `host      all             +pamuser        0.0.0.0/0               pam pamservice=pgpam`
 
    #** Allow scramuser role to authenticate using SCRAM-SHA-256**
 
@@ -47,27 +49,27 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
    Open the `postgresql.conf` file:
 
   
-   sudo nano /etc/postgresql/[version]/main/postgresql.conf
+   `sudo nano /etc/postgresql/[version]/main/postgresql.conf`
    
 
    Find and set the `listen_addresses` parameter:
 
-   plaintext
-   listen_addresses = '*'
+   
+   `listen_addresses = '*'`
    
 
 6. **Restart PostgreSQL Service:**
 
    Restart the PostgreSQL service to apply the changes:
 
-   sudo systemctl restart postgresql
+   `sudo systemctl restart postgresql`
 
 7. **Configure Firewall to Allow PostgreSQL Connections (if applicable):**
 
    Ensure the PostgreSQL port (default 5432) is open in your firewall settings:
 
   
-   sudo ufw allow 5432/tcp
+   `sudo ufw allow 5432/tcp`
    
 
 ### Summary
