@@ -27,13 +27,13 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
    Modify the `pg_hba.conf` file to use roles for authentication. This way, you only need to update the roles when adding or removing users, rather than modifying `pg_hba.conf` for each individual user.
 
    plaintext
-   # Allow pamuser role to authenticate using PAM
+   #** Allow pamuser role to authenticate using PAM**
    host    all             +pamuser        0.0.0.0/0               pam pamservice=pgpam
 
-   # Allow scramuser role to authenticate using SCRAM-SHA-256
+   #** Allow scramuser role to authenticate using SCRAM-SHA-256**
    host    all             +scramuser      0.0.0.0/0               scram-sha-256
 
-   # Allow trustuser role to authenticate without a password
+   #** Allow trustuser role to authenticate without a password**
    host    all             +trustuser      0.0.0.0/0               trust
    
 
