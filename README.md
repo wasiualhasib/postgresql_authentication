@@ -20,11 +20,13 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
 
    
    `GRANT pamuser TO hasib;`
+   
    `GRANT scramuser TO nahid;`
+
    `GRANT trustuser TO zahid;`
    
 
-4. **Configure `pg_hba.conf`:**
+5. **Configure `pg_hba.conf`:**
 
    Modify the `pg_hba.conf` file to use roles for authentication. This way, you only need to update the roles when adding or removing users, rather than modifying `pg_hba.conf` for each individual user.
 
@@ -44,7 +46,7 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
 
    Note: The `+` prefix before the role name indicates that the entry applies to all users who are members of the specified role.
 
-5. **Edit `postgresql.conf` to Listen on All IP Addresses:**
+6. **Edit `postgresql.conf` to Listen on All IP Addresses:**
 
    Open the `postgresql.conf` file:
 
@@ -58,13 +60,13 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
    `listen_addresses = '*'`
    
 
-6. **Restart PostgreSQL Service:**
+7. **Restart PostgreSQL Service:**
 
    Restart the PostgreSQL service to apply the changes:
 
    `sudo systemctl restart postgresql`
 
-7. **Configure Firewall to Allow PostgreSQL Connections (if applicable):**
+8. **Configure Firewall to Allow PostgreSQL Connections (if applicable):**
 
    Ensure the PostgreSQL port (default 5432) is open in your firewall settings:
 
