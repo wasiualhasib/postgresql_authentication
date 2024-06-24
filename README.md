@@ -35,11 +35,11 @@ To simplify the management of user permissions in `pg_hba.conf`, you can leverag
 
    #** Allow scramuser role to authenticate using SCRAM-SHA-256**
 
-   host      all             +scramuser      0.0.0.0/0               scram-sha-256
+   `host      all             +scramuser      0.0.0.0/0               scram-sha-256`
 
    #** Allow trustuser role to authenticate without a password**
 
-   host      all             +trustuser      0.0.0.0/0               trust
+   `host      all             +trustuser      0.0.0.0/0               trust`
    
 
    Note: The `+` prefix before the role name indicates that the entry applies to all users who are members of the specified role.
